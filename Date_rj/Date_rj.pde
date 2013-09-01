@@ -11,7 +11,8 @@ if ( day >= 17 && day <= 22 && month == 06 && year == 2014 ) { start(); } }
 /////////////////////////////////////////////////////////////////////////////////////
 
 String[] what = [ "Tangible Interfaces", "Generative Art", "Creative Coding", "Interaction Design",
-"Interactive Instalations", "Map Projection", "Robotics", "Augmented Reality", "3D Printing", "and much more" ];
+"Interactive Instalations", "Map Projection", "Robotics", "Augmented Reality", "3D Printing", 
+"Wearable Technologies", "and much more" ];
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,6 +77,8 @@ void workshops() {
 
     Processing();
     Arduino();
+    LedThrowies();
+    LillyPad();
     RaspberryPi();
     Unity3D();
     OpenFrameworks();
