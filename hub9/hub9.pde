@@ -15,9 +15,6 @@ int sizeVariation =  20;
 
 int triangles = 20;
 
-color triangle1 = color (255,0,0);
-color triangle2 = color (100,0,0);
-color triangle3 = color (200,0,50);
 int a = 100;
 
 
