@@ -9,12 +9,21 @@ class Grid {
   int centerX;
   int centerY;
   int howManyTriangles;
+  int sidesGlobal;
+  int radiusGlobal;
+  int radiusGlobal_;
+  int sizesGlobal;
+  int sizeVariationsGlobal;
   
   
  Grid(int centerX_, int centerY_, int radius_,  int sides_, int sizes_, int sizeVariations_) {
   
    centerX = centerX_;
    centerY = centerY_;
+   sidesGlobal = sides_;
+   radiusGlobal = radius_;
+   sizesGlobal = sizes_;
+   sizeVariationsGlobal = sizeVariations_;
    
    location1 = new PVector(centerX, centerY);
    
@@ -28,7 +37,7 @@ class Grid {
    for(int j = 0; j < sides_; j++) {
     
       location[count] = new PVector(int(cos(radians(j*360/sides_))*radius_ + centerX), int(sin(radians(j*360/sides_))*radius_ + centerY));
-      //ellipse(location[count].x, location[count].y, 2, 2);
+
       count++;
       
    } 
@@ -52,6 +61,41 @@ class Grid {
      
      triangleObj[i] = new triangleObjects(location1, location2, location3);
      
+   }
+   
+   if(showGrid==1) {
+   
+     count = 0;
+     radiusGlobal_ = radiusGlobal;
+     
+     for(int i = 0; i < sizesGlobal; i++) {
+    
+       for(int j = 0; j < sidesGlobal; j++) {
+    
+          location[count] = new PVector(int(cos(radians(j*360/sidesGlobal))*radiusGlobal_ + centerX), int(sin(radians(j*360/sidesGlobal))*radiusGlobal_ + centerY));
+      
+          fill(0);
+          stroke(255,50);
+          strokeWeight(1);
+          
+            if( j == sidesGlobal - 1) {
+              line(location[count].x, location[count].y,location[count-sidesGlobal+1].x, location[count-sidesGlobal+1].y);
+            }
+            
+            else {
+              line(location[count].x, location[count].y,location[count+1].x, location[count+1].y);
+            }
+            
+          ellipse(location[count].x, location[count].y, 2, 2);
+          
+          count++;
+      
+       } 
+   
+       radiusGlobal_ += sizeVariationsGlobal;
+    
+    }
+    
    }
    
  }

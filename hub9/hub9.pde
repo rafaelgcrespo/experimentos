@@ -10,6 +10,8 @@ Grid[] grid;
 int stageWidth = 1024;
 int stageHeight = 768;
 
+int showGrid = 1;
+
 int sides = 9;
 int radius = 15;
 int steps =  4;
@@ -33,9 +35,9 @@ int paddingXBetweenCells = paddingXCells -interfaceWidth;
 
 void setup() {
   
-  size(stageWidth, stageHeight, P2D);
+  size(stageWidth, stageHeight, OPENGL);
   
-  smooth();
+  smooth(8);
   
   background(bgRed,bgGreen,bgBlue);
   fill(0);
@@ -70,6 +72,7 @@ void mouseReleased() {
   background(bgRed,bgGreen,bgBlue);
   
   fill(0);
+  strokeWeight(0);
   rect(0,0,interfaceWidth,height);
   
   grid = new Grid[cells];

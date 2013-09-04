@@ -52,6 +52,13 @@ void interfaceDraw() {
      .setPosition(interfacePaddingX,interfacePaddingY)
      .setRange(0,30)
      ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("showGrid")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,1)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
      
   
   
