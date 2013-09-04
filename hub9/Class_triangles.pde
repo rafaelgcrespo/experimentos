@@ -18,12 +18,6 @@ class triangleObjects {
   shape(triangleShape);
   
  } 
- 
- void update() {
-   
-   
-   
- }
   
   
   

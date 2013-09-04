@@ -74,10 +74,6 @@ void draw() {
   
 }
 
-void loop() {
-  
-}
-
 void mouseReleased() {
   pushStyle();
   paddingXCells = ((stageWidth-200)/(cells+1))+interfaceWidth;
