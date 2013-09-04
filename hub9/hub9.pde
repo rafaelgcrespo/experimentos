@@ -24,13 +24,23 @@ int bgGreen = 5;
 int bgBlue = 5;
 
 int interfacePaddingY = 50;
-int interfaceBetweenPaddingY = interfacePaddingY;
+int interfaceBetweenPaddingY = 20;
 int interfacePaddingX = 50;
 
 int interfaceWidth = 250;
 
 int paddingXCells = ((stageWidth-200)/(cells+1))+interfaceWidth;
 int paddingXBetweenCells = paddingXCells -interfaceWidth;
+
+
+int randomRedStart = 0;
+int randomRedEnd = 255;
+int randomGreenStart = 20;
+int randomGreenEnd = 21;
+int randomBlueStart = 49;
+int randomBlueEnd = 50;
+int randomAlphaStart = 99;
+int randomAlphaEnd = 100;
 
 
 void setup() {
@@ -64,8 +74,12 @@ void draw() {
   
 }
 
-void mouseReleased() {
+void loop() {
   
+}
+
+void mouseReleased() {
+  pushStyle();
   paddingXCells = ((stageWidth-200)/(cells+1))+interfaceWidth;
   paddingXBetweenCells = paddingXCells-interfaceWidth;
   
@@ -85,6 +99,8 @@ void mouseReleased() {
     
   
   }
+  
+ 
   
 }
 

@@ -60,6 +60,55 @@ void interfaceDraw() {
      ;
      interfacePaddingY += interfaceBetweenPaddingY;
      
+     cp5.addSlider("randomRedStart")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomRedEnd")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomGreenStart")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomGreenEnd")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomBlueStart")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomBlueEnd")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomAlphaStart")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("randomAlphaEnd")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,255)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     
   
   
 }
