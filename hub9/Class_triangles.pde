@@ -10,8 +10,8 @@ class ShapesObjects {
    arrayCopy(vertexArray_, vertexStoreArray_);
    
    fill(random(randomRedStart,randomRedEnd),random(randomGreenStart,randomGreenEnd),random(randomBlueStart,randomBlueEnd),random(randomAlphaStart,randomAlphaEnd));
-   stroke(255,8);
-   strokeWeight(0);
+   stroke(random(strokeRedStart,strokeRedEnd),random(strokeGreenStart,strokeGreenEnd),random(strokeBlueStart,strokeBlueEnd),random(strokeAlphaStart,strokeAlphaEnd));
+   strokeWeight(strokeSize);
    
    shape = createShape();
    shape.beginShape();
@@ -23,7 +23,7 @@ class ShapesObjects {
      shape.vertex(vertexArray_[a].x, vertexArray_[a].y );
      vertexId = vertexGlobalId;
      vertexGlobalId ++;
-     if(vertexGlobalId >=50) {
+     if(vertexGlobalId >=255) {
        vertexGlobalId = 0;
      }
      
@@ -44,7 +44,7 @@ class ShapesObjects {
      
      PVector distanceToCenter = PVector.sub(shape.getVertex(i), shape.getVertex(0));
      distanceToCenter.normalize();
-     int average = constrain(int(fftLin.getAvg(vertexId)*20),0,50+int(fftLin.getAvg(1)));
+     int average = constrain(int(fftLin.getAvg(vertexId)*equalizerPower),0,equalizerLimit+int(fftLin.getAvg(1)));
      distanceToCenter.mult(average);
      PVector newVertex = PVector.add( vertexStoreArray_[i] ,distanceToCenter);
      shape.setVertex(i, newVertex);

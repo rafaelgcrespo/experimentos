@@ -24,6 +24,8 @@ class Grid {
    radiusGlobal = radius_;
    sizesGlobal = sizes_;
    sizeVariationsGlobal = sizeVariations_;
+   
+   vertexGlobalId = 0;
 
   vertexLocation = new PVector[sizes_ * sides_];
   fill(0,0);
@@ -51,8 +53,9 @@ class Grid {
    shapesNumber = shapesNumber_;
    shapeSides = shapeSides_;
    shapesObj = new ShapesObjects[shapesNumber];
-   vertexLocationSelected = new PVector[shapeSides_];
+   vertexLocationSelected = new PVector[shapeSides_+1];
    vertexLocationSelected[0] = new PVector(0,0);
+   vertexLocationSelected[shapeSides] = new PVector(0,0);
    
    for(int i=0; i < shapesNumber; i++) {
      
@@ -72,6 +75,7 @@ class Grid {
  void changeShapes() {
    
    vertexLocationSelected[0] = new PVector(0,0);
+   vertexLocationSelected[shapeSides] = new PVector(0,0);
    
    for(int i=0; i < shapesNumber; i++) {
      
@@ -145,7 +149,7 @@ class Grid {
      
      shapesObj[i].update();
      
-     if (equalizer==1) {
+     if (equalizer) {
      shapesObj[i].equalize();
      }
      
