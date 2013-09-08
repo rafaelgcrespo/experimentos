@@ -32,19 +32,25 @@ void interfaceDraw() {
      
      cp5.addSlider("steps")
      .setPosition(interfacePaddingX,interfacePaddingY)
-     .setRange(0,100)
+     .setRange(0,30)
      ;
      interfacePaddingY += interfaceBetweenPaddingY;
      
      cp5.addSlider("stepsPadding")
      .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,50)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
+     cp5.addSlider("howManyShapes")
+     .setPosition(interfacePaddingX,interfacePaddingY)
      .setRange(0,100)
      ;
      interfacePaddingY += interfaceBetweenPaddingY;
      
-     cp5.addSlider("triangles")
+     cp5.addSlider("shapesVertex")
      .setPosition(interfacePaddingX,interfacePaddingY)
-     .setRange(0,1000)
+     .setRange(3,10)
      ;
      interfacePaddingY += interfaceBetweenPaddingY;
      
@@ -108,7 +114,17 @@ void interfaceDraw() {
      ;
      interfacePaddingY += interfaceBetweenPaddingY;
      
+     cp5.addSlider("rotation")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(-0.50,0.50)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
      
+     cp5.addSlider("equalizer")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0,1)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
   
   
 }

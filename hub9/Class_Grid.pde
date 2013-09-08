@@ -1,19 +1,19 @@
 class Grid {
   
-  PVector[] location;
-  PVector location1;
-  PVector location2;
-  PVector location3;
-  triangleObjects[] triangleObj;
+  PVector[] vertexLocation;
+  PVector[] vertexLocationSelected;
+  ShapesObjects[] shapesObj;
   int count = 0;
   int centerX;
   int centerY;
-  int howManyTriangles;
+  int shapesNumber;
   int sidesGlobal;
   int radiusGlobal;
   int radiusGlobal_;
   int sizesGlobal;
   int sizeVariationsGlobal;
+  int shapeSides;
+  
   
   
  Grid(int centerX_, int centerY_, int radius_,  int sides_, int sizes_, int sizeVariations_) {
@@ -24,10 +24,8 @@ class Grid {
    radiusGlobal = radius_;
    sizesGlobal = sizes_;
    sizeVariationsGlobal = sizeVariations_;
-   
-   location1 = new PVector(centerX, centerY);
-   
-  location = new PVector[sizes_ * sides_];
+
+  vertexLocation = new PVector[sizes_ * sides_];
   fill(0,0);
   stroke(0,0);
   //ellipse(centerX, centerY, 2, 2);
@@ -36,7 +34,7 @@ class Grid {
     
    for(int j = 0; j < sides_; j++) {
     
-      location[count] = new PVector(int(cos(radians(j*360/sides_))*radius_ + centerX), int(sin(radians(j*360/sides_))*radius_ + centerY));
+      vertexLocation[count] = new PVector(int(cos(radians(j*(360/sides_)))*radius_), int(sin(radians(j*(360/sides_)))*radius_));
 
       count++;
       
@@ -48,22 +46,53 @@ class Grid {
   
  } 
  
- void createTriangles(int howManyTriangles_) {
+ void createShapes(int shapesNumber_, int shapeSides_) {
    
-   howManyTriangles = howManyTriangles_;
+   shapesNumber = shapesNumber_;
+   shapeSides = shapeSides_;
+   shapesObj = new ShapesObjects[shapesNumber];
+   vertexLocationSelected = new PVector[shapeSides_];
+   vertexLocationSelected[0] = new PVector(0,0);
    
-   triangleObj = new triangleObjects[howManyTriangles];
-   
-   for(int i=0; i < howManyTriangles; i ++) {
-
-     location2 = location[int(random(count))].get();
-     location3 = location[int(random(count))].get();
+   for(int i=0; i < shapesNumber; i++) {
      
-     triangleObj[i] = new triangleObjects(location1, location2, location3);
+     for(int j=1; j < shapeSides_; j++) {
+       
+       vertexLocationSelected[j] = vertexLocation[int(random(count))].get();
+     }
+     
+     shapesObj[i] = new ShapesObjects(vertexLocationSelected);
      
    }
    
-   if(showGrid==1) {
+   
+   
+ }
+ 
+ void changeShapes() {
+   
+   vertexLocationSelected[0] = new PVector(0,0);
+   
+   for(int i=0; i < shapesNumber; i++) {
+     
+     for(int j=1; j < shapeSides; j++) {
+       
+       vertexLocationSelected[j] = vertexLocation[int(random(count))].get();
+     }
+     
+     shapesObj[i].change(vertexLocationSelected);
+     
+   }
+   
+   
+   
+ }
+   
+   
+  void showGrid(boolean gridVisible) {
+   
+  
+   if(gridVisible) {
    
      count = 0;
      radiusGlobal_ = radiusGlobal;
@@ -71,54 +100,59 @@ class Grid {
      for(int i = 0; i < sizesGlobal; i++) {
     
        for(int j = 0; j < sidesGlobal; j++) {
-    
-          location[count] = new PVector(int(cos(radians(j*360/sidesGlobal))*radiusGlobal_ + centerX), int(sin(radians(j*360/sidesGlobal))*radiusGlobal_ + centerY));
       
           fill(0);
-          stroke(255,50);
+          stroke(255,180);
           strokeWeight(1);
           
             if( j == sidesGlobal - 1) {
-              line(location[count].x, location[count].y,location[count-sidesGlobal+1].x, location[count-sidesGlobal+1].y);
+              line(vertexLocation[count].x + centerX, vertexLocation[count].y + centerY,vertexLocation[count-sidesGlobal+1].x + centerX, vertexLocation[count-sidesGlobal+1].y + centerY);
             }
             
             else {
-              line(location[count].x, location[count].y,location[count+1].x, location[count+1].y);
+              line(vertexLocation[count].x + centerX, vertexLocation[count].y + centerY,vertexLocation[count+1].x + centerX, vertexLocation[count+1].y + centerY);
             }
             
-          ellipse(location[count].x, location[count].y, 2, 2);
+          ellipse(vertexLocation[count].x + centerX, vertexLocation[count].y + centerY, 2, 2);
           
           count++;
       
        } 
-   
-       radiusGlobal_ += sizeVariationsGlobal;
     
     }
     
    }
    
+   
  }
  
- void changeTriangles() {
+  void display() {
    
-   triangleObj = new triangleObjects[howManyTriangles];
-   
-   for(int i=0; i < howManyTriangles; i ++) {
-
-     location2 = location[int(random(count))].get();
-     location3 = location[int(random(count))].get();
+  
+   for(int i=0; i < shapesNumber; i ++) {
      
-     triangleObj[i] = new triangleObjects(location1, location2, location3);
+     shapesObj[i].display(centerX, centerY);
      
    }
    
    
-   
  }
-   
+ 
+ void update() {
    
   
+   for(int i=0; i < shapesNumber; i ++) {
+     
+     shapesObj[i].update();
+     
+     if (equalizer==1) {
+     shapesObj[i].equalize();
+     }
+     
+   }
+   
+   
+ }
   
   
 }
