@@ -70,6 +70,13 @@ void interfaceDraw() {
      ;
      interfacePaddingY += interfaceBetweenPaddingY;
      
+     cp5.addSlider("howManyLines")
+     .setLabel("How Many Lines?")
+     .setPosition(interfacePaddingX,interfacePaddingY)
+     .setRange(0, 10)
+     ;
+     interfacePaddingY += interfaceBetweenPaddingY;
+     
      cp5.addSlider("randomRedStart")
      .setLabel("Fill Red Min")
      .setPosition(interfacePaddingX,interfacePaddingY)
